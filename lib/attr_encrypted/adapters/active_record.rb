@@ -33,6 +33,7 @@ if defined?(ActiveRecord::Base)
             if ::ActiveRecord::VERSION::STRING > "3.1"
               alias_method :assign_attributes_without_attr_encrypted, :assign_attributes
               def assign_attributes(*args)
+                return if args.size == 0
                 perform_attribute_assignment :assign_attributes_without_attr_encrypted, *args
               end
             end
